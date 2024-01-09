@@ -1,6 +1,9 @@
 {
-    "register": "Register",
-    "email": "Email",
-    "password": "Password",
-    "googleLogin": "Google Login"
+    "login" : "Login",
+    "register":"Register",
+    "email" : "Email",
+    "userName" : "UserName",
+    "password" : "Password",
+    "googlesignin" : "Googlesignin"
+
 }

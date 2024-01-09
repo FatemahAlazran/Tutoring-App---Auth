@@ -16,7 +16,7 @@ class RegisterScreen extends StatelessWidget {
         appBarTitle: Text(
           context.translate.register,
           style: context.theme.textTheme.titleMedium?.copyWith(
-            color: MyColors.white,
+            color: MyColors.secondary_400,
           ),
         ),
       ),
@@ -33,7 +33,12 @@ class RegisterScreen extends StatelessWidget {
             height: 12,
           ),
           TextButton(
-              onPressed: () {}, child: Text(context.translate.googleLogin)),
+              onPressed: () {},
+              child: Text(
+                context.translate.googlesignin,
+                style:
+                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+              )),
         ],
       ),
     );
