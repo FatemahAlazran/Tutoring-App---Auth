@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tutoring_app/app/config/router/named_rout.dart';
+import 'package:tutoring_app/app/modules/views/home_page.dart';
 import 'package:tutoring_app/app/modules/views/login.dart';
 import 'package:tutoring_app/app/modules/views/register.dart';
+import 'package:tutoring_app/app/modules/views/splash_screen.dart';
 
 ///[rootNavigatorKey] used for global | general navigation
 final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -22,6 +24,14 @@ abstract class AppRouter {
         path: MyNamedRoutes.root,
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
+          child: SplashScreen(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: MyNamedRoutes.register,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
           child: RegisterScreen(),
         ),
       ),
@@ -32,6 +42,15 @@ abstract class AppRouter {
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
           child: const LoginScreen(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: "/${MyNamedRoutes.homePage}",
+        name: MyNamedRoutes.homePage,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const HomePage(),
         ),
       ),
     ],
