@@ -4,6 +4,7 @@
     "email" : "",
     "userName" : "",
     "password" : "",
-    "googlesignin" : ""
-
+    "googlesignin" : "",
+    "tutors":"",
+    "profile":""
 }

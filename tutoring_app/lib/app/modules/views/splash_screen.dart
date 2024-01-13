@@ -15,11 +15,11 @@ class SplashScreen extends ConsumerWidget {
       body: checkIfAuth.when(data: (AsyncValue<User?> data) {
         if (data.value?.uid != null) {
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            context.goNamed(MyNamedRoutes.homePage);
+            context.go(MyNamedRoutes.homePage);
           });
         } else {
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            context.goNamed(MyNamedRoutes.register);
+            context.go(MyNamedRoutes.register);
           });
         }
         return const Center(

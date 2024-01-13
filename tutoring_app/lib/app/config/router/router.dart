@@ -30,6 +30,7 @@ abstract class AppRouter {
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         path: MyNamedRoutes.register,
+        name: MyNamedRoutes.register,
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
           child: RegisterScreen(),
@@ -37,7 +38,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
-        path: "/${MyNamedRoutes.login}",
+        path: MyNamedRoutes.login,
         name: MyNamedRoutes.login,
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
@@ -46,7 +47,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
-        path: "/${MyNamedRoutes.homePage}",
+        path: MyNamedRoutes.homePage,
         name: MyNamedRoutes.homePage,
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,

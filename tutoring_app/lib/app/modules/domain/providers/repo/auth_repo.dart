@@ -13,11 +13,18 @@ class AuthRepository {
   User? get currentUser => _firebaseAuth.currentUser;
 
   Future<User?> createUserWithEmailAndPassword(
-      {required String email, required String password}) async {
+      {required String email,
+      required String password,
+      required String userName}) async {
     try {
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
+      );
+      await saveUserInfoToFirebase(
+        userCredential.user?.uid,
+        userName,
+        userCredential.user?.email,
       );
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
@@ -57,18 +64,15 @@ class AuthRepository {
     }
   }
 
-  Future<void> saveUserInfoToFirebase(
-      String userId, String userName, String email) async {
+  saveUserInfoToFirebase(String? uid, String? userName, String? email) async {
     try {
-      await FirebaseFirestore.instance.collection('users').doc(userId).set(
-        {
-          'username': userName,
-          'email': email,
-          'userLocation': null,
-        },
-      );
+      await FirebaseFirestore.instance.collection("users").doc(uid).set({
+        "username": userName,
+        "email": email,
+        "id": uid,
+      });
     } catch (e) {
-      throw AuthException(e.toString());
+      throw e.toString();
     }
   }
 

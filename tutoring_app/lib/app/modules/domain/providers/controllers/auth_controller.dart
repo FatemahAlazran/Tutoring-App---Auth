@@ -18,7 +18,9 @@ class AuthController extends StateNotifier<AuthState> {
     try {
       // Get back usercredential future from createUserWithEmailAndPassword method
       User? userCred = await _authRepository.createUserWithEmailAndPassword(
-          email: email.toString(), password: password.toString());
+          email: email.toString(),
+          password: password.toString(),
+          userName: userName.toString());
       if (userCred != null) {
         // Save username name
         await userCred.updateDisplayName(userName.toString());
